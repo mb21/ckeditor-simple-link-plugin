@@ -31,6 +31,7 @@
         				href = "http://" + href;
         			}
 	            element.setAttribute("href", href);
+	            element.setAttribute("data-cke-saved-href", href);
 	            if(!element.getText()) {
         				element.setText(this.getValue());
         			}
