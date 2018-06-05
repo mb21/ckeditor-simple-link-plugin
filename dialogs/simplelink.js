@@ -1,4 +1,5 @@
 ﻿CKEDITOR.dialog.add("simplelinkDialog", function(editor) {
+	var isExternalURL = /^((http|https):\/\/|mailto:)/;
 	return {
 		allowedContent: "a[href,target]",
 		title: "Insert Link",
@@ -15,7 +16,6 @@
 				validate: CKEDITOR.dialog.validate.notEmpty( "url cannot be empty." ),
         setup: function( element ) {
         	var href = element.getAttribute("href");
-        	var isExternalURL = /^(http|https):\/\//;
         	if(href) {
         			if(!isExternalURL.test(href)) {
         				href = "http://" + href;
@@ -25,7 +25,6 @@
         },
         commit: function(element) {
         	var href = this.getValue();
-        	var isExternalURL = /^(http|https):\/\//;
         	if(href) {
         			if(!isExternalURL.test(href)) {
         				href = "http://" + href;
